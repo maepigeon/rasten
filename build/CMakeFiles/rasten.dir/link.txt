@@ -1,1 +1,0 @@
-/usr/bin/c++ -g -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/rasten.dir/src/Geom.cpp.o CMakeFiles/rasten.dir/src/Render.cpp.o CMakeFiles/rasten.dir/src/main.cpp.o -o rasten  -Wl,-rpath,/usr/local/lib /usr/local/lib/libSDL3.0.dylib /usr/local/lib/libglm.dylib
