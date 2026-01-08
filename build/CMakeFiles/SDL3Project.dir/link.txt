@@ -1,0 +1,1 @@
+/usr/bin/c++ -g -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/SDL3Project.dir/main.cpp.o -o SDL3Project  -Wl,-rpath,/usr/local/lib /usr/local/lib/libSDL3.0.dylib /usr/local/lib/libglm.dylib
