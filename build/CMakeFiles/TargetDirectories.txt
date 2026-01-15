@@ -1,3 +1,0 @@
-/Users/mae/workspace/graphics-projects/rasten/build/CMakeFiles/rasten.dir
-/Users/mae/workspace/graphics-projects/rasten/build/CMakeFiles/edit_cache.dir
-/Users/mae/workspace/graphics-projects/rasten/build/CMakeFiles/rebuild_cache.dir
