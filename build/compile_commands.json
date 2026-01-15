@@ -1,0 +1,50 @@
+[
+{
+  "directory": "/Users/mae/workspace/graphics-projects/rasten/build",
+  "command": "/usr/bin/c++  -I/Users/mae/workspace/graphics-projects/rasten/src -I/Users/mae/workspace/graphics-projects/rasten/lib/tinygltf -g -std=gnu++2b -arch arm64 -o CMakeFiles/rasten.dir/src/main.cpp.o -c /Users/mae/workspace/graphics-projects/rasten/src/main.cpp",
+  "file": "/Users/mae/workspace/graphics-projects/rasten/src/main.cpp",
+  "output": "CMakeFiles/rasten.dir/src/main.cpp.o"
+},
+{
+  "directory": "/Users/mae/workspace/graphics-projects/rasten/build",
+  "command": "/usr/bin/c++  -I/Users/mae/workspace/graphics-projects/rasten/src -I/Users/mae/workspace/graphics-projects/rasten/lib/tinygltf -g -std=gnu++2b -arch arm64 -o CMakeFiles/rasten.dir/src/Camera.cpp.o -c /Users/mae/workspace/graphics-projects/rasten/src/Camera.cpp",
+  "file": "/Users/mae/workspace/graphics-projects/rasten/src/Camera.cpp",
+  "output": "CMakeFiles/rasten.dir/src/Camera.cpp.o"
+},
+{
+  "directory": "/Users/mae/workspace/graphics-projects/rasten/build",
+  "command": "/usr/bin/c++  -I/Users/mae/workspace/graphics-projects/rasten/src -I/Users/mae/workspace/graphics-projects/rasten/lib/tinygltf -g -std=gnu++2b -arch arm64 -o CMakeFiles/rasten.dir/src/Model.cpp.o -c /Users/mae/workspace/graphics-projects/rasten/src/Model.cpp",
+  "file": "/Users/mae/workspace/graphics-projects/rasten/src/Model.cpp",
+  "output": "CMakeFiles/rasten.dir/src/Model.cpp.o"
+},
+{
+  "directory": "/Users/mae/workspace/graphics-projects/rasten/build",
+  "command": "/usr/bin/c++  -I/Users/mae/workspace/graphics-projects/rasten/src -I/Users/mae/workspace/graphics-projects/rasten/lib/tinygltf -g -std=gnu++2b -arch arm64 -o CMakeFiles/rasten.dir/src/ModelLoader.cpp.o -c /Users/mae/workspace/graphics-projects/rasten/src/ModelLoader.cpp",
+  "file": "/Users/mae/workspace/graphics-projects/rasten/src/ModelLoader.cpp",
+  "output": "CMakeFiles/rasten.dir/src/ModelLoader.cpp.o"
+},
+{
+  "directory": "/Users/mae/workspace/graphics-projects/rasten/build",
+  "command": "/usr/bin/c++  -I/Users/mae/workspace/graphics-projects/rasten/src -I/Users/mae/workspace/graphics-projects/rasten/lib/tinygltf -g -std=gnu++2b -arch arm64 -o CMakeFiles/rasten.dir/src/Mesh.cpp.o -c /Users/mae/workspace/graphics-projects/rasten/src/Mesh.cpp",
+  "file": "/Users/mae/workspace/graphics-projects/rasten/src/Mesh.cpp",
+  "output": "CMakeFiles/rasten.dir/src/Mesh.cpp.o"
+},
+{
+  "directory": "/Users/mae/workspace/graphics-projects/rasten/build",
+  "command": "/usr/bin/c++  -I/Users/mae/workspace/graphics-projects/rasten/src -I/Users/mae/workspace/graphics-projects/rasten/lib/tinygltf -g -std=gnu++2b -arch arm64 -o CMakeFiles/rasten.dir/src/ResourceManager.cpp.o -c /Users/mae/workspace/graphics-projects/rasten/src/ResourceManager.cpp",
+  "file": "/Users/mae/workspace/graphics-projects/rasten/src/ResourceManager.cpp",
+  "output": "CMakeFiles/rasten.dir/src/ResourceManager.cpp.o"
+},
+{
+  "directory": "/Users/mae/workspace/graphics-projects/rasten/build",
+  "command": "/usr/bin/c++  -I/Users/mae/workspace/graphics-projects/rasten/src -I/Users/mae/workspace/graphics-projects/rasten/lib/tinygltf -g -std=gnu++2b -arch arm64 -o CMakeFiles/rasten.dir/src/CPURender/RasterizerGeometry.cpp.o -c /Users/mae/workspace/graphics-projects/rasten/src/CPURender/RasterizerGeometry.cpp",
+  "file": "/Users/mae/workspace/graphics-projects/rasten/src/CPURender/RasterizerGeometry.cpp",
+  "output": "CMakeFiles/rasten.dir/src/CPURender/RasterizerGeometry.cpp.o"
+},
+{
+  "directory": "/Users/mae/workspace/graphics-projects/rasten/build",
+  "command": "/usr/bin/c++  -I/Users/mae/workspace/graphics-projects/rasten/src -I/Users/mae/workspace/graphics-projects/rasten/lib/tinygltf -g -std=gnu++2b -arch arm64 -o CMakeFiles/rasten.dir/src/CPURender/Rasterizer.cpp.o -c /Users/mae/workspace/graphics-projects/rasten/src/CPURender/Rasterizer.cpp",
+  "file": "/Users/mae/workspace/graphics-projects/rasten/src/CPURender/Rasterizer.cpp",
+  "output": "CMakeFiles/rasten.dir/src/CPURender/Rasterizer.cpp.o"
+}
+]

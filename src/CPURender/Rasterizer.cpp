@@ -1,10 +1,87 @@
 #include <glm/glm.hpp>
 #include <iostream>
 
-#include "Geom.hpp"
-#include "Render.hpp"
+#include "RasterizerGeometry.hpp"
+#include "Rasterizer.hpp"
 
-void setSurfaceColor(SDL_Surface *surface, int width, int height, Color color) {
+Rasterizer::Rasterizer() {}
+
+void Rasterizer::initGeometry() {
+    // Initialize the geometry
+    numTriangles = 3;
+    t1 = {{0.0, 0.0}, {0.0, 100.0}, {100.0, 0.0}};
+    t2 = {{100.0, 200.0}, {100.0, 0.0}, {200.0, 50.0}};
+    t3 = {{300.0, 200.0}, {350.0, 400.0}, {350.0, 250.0}};
+    triangles.push_back(t1);
+    triangles.push_back(t2);
+    triangles.push_back(t3);
+    line1 = {{200.0, 60.0}, {100 , 260}};
+    lines.push_back(line1);
+}
+
+void loadGeometry() {
+    
+}
+
+void Rasterizer::destroy() {
+    SDL_DestroySurface(surface);
+    SDL_DestroyTexture(texture);
+}
+
+void Rasterizer::update() {
+    lineABPoints.clear();
+
+    SDL_RenderClear(sdlRenderer);
+    Color colorRed= {255, 0, 0, 255};
+    Color colorBlue= {0, 0, 255, 255};
+    //Clear the renderer
+    setSurfaceColor(surface, width, height, color);
+    //Render Lines
+    bresenhamLine(lineABPoints, lines[0].v0.x, lines[0].v0.y, lines[0].v1.x, lines[0].v1.y); 
+    SDL_FPoint sdlBresenhamPoints[lineABPoints.size()];
+    for (int i = 0; i < lineABPoints.size(); i++) {
+        setPixel(surface, (float)lineABPoints[i].x, (float)lineABPoints[i].y, colorRed);
+    }
+    // Render all triangles, in order defined in the list
+    for (int i = 0; i < numTriangles; i++) {
+        std::vector<glm::ivec2> points; // The points to render
+        renderTriangle(points, triangles[i].v0, triangles[i].v1, triangles[i].v2);
+        Color color = colorRed;
+        if (i == 1) {
+            color = colorBlue;
+        }
+        for (int i = 0; i < points.size(); i++) {
+            setPixel(surface, points[i].x, points[i].y, color);
+        }
+    }
+    SDL_UpdateTexture(texture, nullptr, surface->pixels, surface->pitch);
+    SDL_RenderTexture(sdlRenderer, texture, NULL, NULL);
+    SDL_RenderPresent(sdlRenderer);
+}
+
+
+bool Rasterizer::createCanvas(SDL_Renderer* renderer, SDL_Window* window, Color color, int width, int height) {
+    this->width = width;
+    this->height = height;
+    this->color = color;
+    sdlRenderer = renderer;
+    if (renderer == nullptr) {
+        std::cerr << "SDL_CreateRenderer Error: " << SDL_GetError() << std::endl;
+        SDL_DestroyWindow(window);
+        SDL_Quit();
+        return false;
+    }
+  
+    // Fill the window with a solid color
+    surface = SDL_CreateSurface(width, height, SDL_PIXELFORMAT_RGBA32);
+    setSurfaceColor(surface, width, height, color);
+    // Create a texture that can be sent to the gpu from the (cpu-owned) surface 
+    texture = SDL_CreateTexture(sdlRenderer, SDL_PIXELFORMAT_RGBA32, SDL_TEXTUREACCESS_STREAMING, width, height );
+
+    return true;
+}
+
+void Rasterizer::setSurfaceColor(SDL_Surface *surface, int width, int height, Color color) {
     SDL_LockSurface(surface);
     for (int x = 0; x < width; x++) {
         for (int y = 0; y < height; y++) {
@@ -16,9 +93,9 @@ void setSurfaceColor(SDL_Surface *surface, int width, int height, Color color) {
 
 
 // https://stackoverflow.com/questions/20070155/how-to-set-a-pixel-in-a-sdl-surface
-void setPixel(SDL_Surface *surface, int x, int y, Color color)
+void Rasterizer::setPixel(SDL_Surface *surface, int x, int y, Color color)
 {
-    Uint32* const target_pixel = (Uint32 *) ((Uint8 *) surface->pixels
+    uint32_t* const target_pixel = (uint32_t *) ((uint8_t *) surface->pixels
                 + y * surface->pitch + x * SDL_BYTESPERPIXEL(surface->format));
     *target_pixel = color.bits;
 }
@@ -172,7 +249,7 @@ void getTriangleMaxMinArrays(int* LPointsArray, int* RPointsArray, int minY, int
 void renderTriangle(std::vector<glm::ivec2>& points, glm::ivec2 A, glm::ivec2 B, glm::ivec2 C) {
     int maxY = std::max(std::max(A.y, B.y), C.y);
     int minY = std::min(std::min(A.y, B.y), C.y);
-    int triHeight = maxY - minY;
+    int triHeight = maxY - minY + 1;
     int leftPoints[triHeight];
     int rightPoints[triHeight]; 
     std::fill_n(leftPoints, triHeight, 1000000);

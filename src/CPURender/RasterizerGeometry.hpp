@@ -1,9 +1,13 @@
-#ifndef GEOM
-#define GEOM
+#ifndef RASTERIZER_GEOMETRY
+#define RASTERIZER_GEOMETRY
 #include <cstdint>
 
 #include <glm/glm.hpp>
 
+struct Line {
+    glm::ivec2 v0;
+    glm::ivec2 v1;
+};
 struct Triangle {
     glm::ivec2 v0;
     glm::ivec2 v1;

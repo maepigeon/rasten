@@ -12,18 +12,27 @@ find_package(glm CONFIG REQUIRED)
 
 # sources variable contains a link to all cpp files to compile
 set(SOURCES
-    src/Geom.cpp
-    src/Render.cpp
     src/main.cpp
+    src/Camera.cpp
+    src/Model.cpp
+    src/ModelLoader.cpp
+    src/Mesh.cpp
+    src/ResourceManager.cpp
+    src/CPURender/RasterizerGeometry.cpp
+    src/CPURender/Rasterizer.cpp
 )
-add_executable(${ProjectName} ${SOURCES})
+add_executable(rasten ${SOURCES})
 
 target_link_libraries(${ProjectName} SDL3::SDL3)
 target_link_libraries(${ProjectName} glm::glm)
+
+set(TINYGLTF_HEADER_ONLY ON CACHE INTERNAL "" FORCE)
+set(TINYGLTF_INSTALL OFF CACHE INTERNAL "" FORCE)
 
 # Set the directories that should be included in the build command for this target
 # when running g++ these will be included as -I/directory/path/
 target_include_directories(${ProjectName}
     PRIVATE 
-        ${CMAKE_CURRENT_SOURCE_DIR}/include
+        ${CMAKE_CURRENT_SOURCE_DIR}/src
+        ${CMAKE_CURRENT_SOURCE_DIR}/lib/tinygltf
 )
